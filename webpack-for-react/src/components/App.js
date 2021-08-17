@@ -4,6 +4,8 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import DynamicPage from './DynamicPage';
 import NoMatch from './NoMatch';
+import './main.css'
+import './layout.css'
 
 const App = () => {
   return (
