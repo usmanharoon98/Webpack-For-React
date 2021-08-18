@@ -6,30 +6,50 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const port = process.env.PORT || 5000;
 
 module.exports = {
+  // mode tells webpack this config will be either "development" or "production"  
   mode: 'development',
+  // Specifies the entry point of your application
   entry: {
       app: './src/index.js'
   },
+  // output tells webpack how to write the compiled files to desk
   output: {
-      filename: 'bundle.[hash].js',
+      //  file name of the bundle application
+      filename: 'bundle.[hash].js', 
+      // hot reloading won't work as expected for nested routes without it
       publicPath: '/'
   },
+  //devtool will create source maps to help for debugging
   devtool: 'inline-source-map',
   target: 'web',
   resolve: {
+      extensions: ['.tsx', '.ts', '.js', 'jsx'],
       alias: {
+          // Replace react-dom with the custom react-dom from hot-loader
           "react-dom": "@hot-loader/react-dom"
       }
   },
+  // what type of modules your application includes
   module: {
+      // how we handle each different types of module
       rules: [
           {
+              //we test for files with a .js extension
               test: /\.js$/,
+              // excluding the node modules
               exclude: /node_modules/,
+              // use babel via babel-loader
               use: ['babel-loader']
           },
           {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/,
+          },
+          {
               test: /\.css$/,
+              // 1 .Resolve all the imports and url(...)s in the CSS with the CSS loader
+              // 2 .Insert those styles into the page with the style loader
               use: ['style-loader', 'css-loader'],
           }
       ]
@@ -39,6 +59,7 @@ module.exports = {
           title: 'hot module replacement',
       }),
       new HtmlWebpackPlugin({
+          // we specify the html template
           template: 'public/index.html',
       }),
       new ReactRefreshWebpackPlugin()
@@ -48,6 +69,7 @@ module.exports = {
       port: port,
       historyApiFallback: true,
       open: true,
-      hot: true
+      // Enable HMR on the server 
+      hot: true 
   }
 };
