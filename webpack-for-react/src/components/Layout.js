@@ -5,11 +5,9 @@ import { Header, Container, Divider, Icon } from 'semantic-ui-react';
 const Layout = ({ children }) => {
   return (
     <Container>
-      <Link to="/">
-        <Header as="h1" className="h1">
-          webpack-for-react
-        </Header>
-      </Link>
+      <Header as="h1" className="h1">
+        webpack-for-react
+      </Header>
       {children}
       <Divider />
       <p className="pull-right">

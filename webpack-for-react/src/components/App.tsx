@@ -6,6 +6,7 @@ import DynamicPage from './DynamicPage';
 import NoMatch from './NoMatch';
 import './main.css'
 import './layout.css'
+import "./style.scss";
 
 const App = () => {
   return (

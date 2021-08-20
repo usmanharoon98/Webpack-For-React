@@ -48,9 +48,27 @@ module.exports = {
           },
           {
               test: /\.css$/,
-              // 1 .Resolve all the imports and url(...)s in the CSS with the CSS loader
-              // 2 .Insert those styles into the page with the style loader
-              use: ['style-loader', 'css-loader'],
+              use: [
+                  // Creates `style` nodes from JS strings
+                  'style-loader', 
+                  // Translates CSS into CommonJS
+                  'css-loader', 
+                  // tool for transforming CSS with JavaScript plugins  
+                  'postcss-loader'
+                ],
+          },
+          {
+            test: /\.s[ac]ss$/i,
+            use: [
+              "style-loader",
+              "css-loader",
+              // Compiles Sass to CSS
+              "sass-loader",
+            ],
+          },
+          {
+              test: /\.svg$/,
+              use: ['@svgr/webpack']
           }
       ]
   },

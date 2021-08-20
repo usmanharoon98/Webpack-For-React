@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Header } from 'semantic-ui-react';
+import RightArrow from '../images/right-arrow.svg'
 import Layout from './Layout';
 
 const Home = () => {
   return (
     <Layout>
-      <p className="red">Hello World of React and Webpack!</p>
-      <p>
-        <Link to="/dynamic">Navigate to Dynamic Page</Link>
-      </p>
+      <Header as="h2">First Page</Header>
+      <p className="">Hello World of React and Webpack!</p>
+      <Link to="/dynamic">
+        <span className="svg-icon">
+          <RightArrow className="right-arrow"/>
+        </span>
+      </Link>
     </Layout>
   );
 };
