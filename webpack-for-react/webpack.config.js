@@ -15,10 +15,11 @@ module.exports = {
       // for code splitting
       vendor: ['semantic-ui-react'],
       // main entry
-      app: './src/index.js'
+      app: './src/index.tsx'
   },
   // output tells webpack how to write the compiled files to desk
   output: {
+      path: path.resolve(__dirname, 'dist/'),
       //  file name of the bundle application
       filename: 'bundle.[chunkhash].js', 
       // hot reloading won't work as expected for nested routes without it
@@ -28,7 +29,7 @@ module.exports = {
   devtool: 'inline-source-map',
   target: 'web',
   resolve: {
-      extensions: ['.tsx', '.ts', '.js', 'jsx'],
+      extensions: ['.tsx', '.ts', '.js', '.jsx'],
       alias: {
           // Replace react-dom with the custom react-dom from hot-loader
           "react-dom": "@hot-loader/react-dom"
